@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:8080/hunt",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Radar",
+      "hasCanvas": false,
+      "bodyTextLen": 121,
+      "bodyTextHash": "16c7e9607a9a00cb75e4206253c35a4e9f9ed24c51412f57a9bada2e30f5a1aa",
+      "bodyTextPrefix": "Radar Sign in to the desk First hunt is free. Two leads held 48 ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/hunt.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Radar",
+      "hasCanvas": false,
+      "bodyTextLen": 121,
+      "bodyTextHash": "16c7e9607a9a00cb75e4206253c35a4e9f9ed24c51412f57a9bada2e30f5a1aa",
+      "bodyTextPrefix": "Radar Sign in to the desk First hunt is free. Two leads held 48 ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/hunt-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "verdictFile": "/workspace/screenshots/hunt.json"
+}

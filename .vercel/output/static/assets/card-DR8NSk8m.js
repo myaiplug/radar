@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CM8U5GxS.js";import{a as t}from"./button-CVK0-0Sq.js";var n=e();function r({className:e,...r}){return(0,n.jsx)(`div`,{className:t(`rounded-xl bg-surface p-4 shadow-[var(--shadow-border)]`,e),...r})}export{r as t};

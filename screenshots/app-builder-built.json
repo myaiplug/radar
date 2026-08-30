@@ -1,0 +1,37 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Radar",
+      "hasCanvas": false,
+      "bodyTextLen": 1414,
+      "bodyTextHash": "5169b33ffa75258769f6d742df9d3dd091c5474a60f0e0465064f19d9101ebaa",
+      "bodyTextPrefix": "Radar Sign in PERSONAL FREELANCE DESK Find the work. Book the wo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Radar",
+      "hasCanvas": false,
+      "bodyTextLen": 1414,
+      "bodyTextHash": "5169b33ffa75258769f6d742df9d3dd091c5474a60f0e0465064f19d9101ebaa",
+      "bodyTextPrefix": "Radar Sign in PERSONAL FREELANCE DESK Find the work. Book the wo",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
