@@ -49,7 +49,7 @@ function HuntPage() {
 
   function saveProspect(p: Prospect) {
     if (!unlocked && savesLeft <= 0) {
-      toast.error("Free desk holds 2 leads. Unlock $5 to keep the rest.");
+      toast.error("Free desk holds 2 leads. Unlock the desk to keep the rest.");
       return;
     }
     const key = p.postUrl || `${p.name}|${p.contact}`;
@@ -86,15 +86,15 @@ function HuntPage() {
       <h1 className="mt-2 font-display text-4xl leading-none md:text-5xl">Live asks</h1>
       <p className="mt-3 max-w-xl text-sm text-muted">
         {unlocked
-          ? "Radar searches X, Reddit, and Upwork right now. Every card is a real post with a permalink."
-          : "One free hunt. Live posts from the last 48 hours. Park 2 names. The rest walk if you leave."}
+          ? "Radar matches public posts from Reddit, Hacker News, and job boards. Every card has a real permalink."
+          : "One free hunt. Public posts from the last 48 hours. Park 2 names. The rest walk if you leave."}
       </p>
 
       {!canHunt ? (
         <div className="mt-8 max-w-xl">
           <UnlockCard
             title="Hunt is locked"
-            body="That was the tease. $5 opens unlimited hunts and keeps every lead you already parked."
+            body="That was the tease. Unlock the desk for unlimited hunts and to keep every lead you already parked."
           />
         </div>
       ) : (
@@ -189,7 +189,7 @@ function HuntPage() {
       {hunt.isPending ? (
         <div className="mt-8">
           <p className="text-sm text-muted">
-            Scanning X, Reddit, and Upwork for hiring posts from the{" "}
+            Matching public hiring posts from the{" "}
             {windowHours === 48 ? "last 48 hours" : "last 7 days"}. Sellers get dropped.
           </p>
           <div className="mt-4 grid gap-3 md:grid-cols-2">
@@ -254,7 +254,7 @@ function HuntPage() {
                   />
                   <div className="mt-4">
                     {blocked ? (
-                      <UnlockButton size="sm" label="Unlock to save $5" />
+                      <UnlockButton size="sm" label="Unlock to save" />
                     ) : (
                       <Button
                         size="sm"
@@ -274,7 +274,7 @@ function HuntPage() {
             <div className="mt-8 max-w-xl">
               <UnlockCard
                 title="Don't let them walk"
-                body="You just found live work. Two names fit on the free desk. $5 keeps the rest before they go dark."
+                body="You just found live work. Two names fit on the free desk. Unlock keeps the rest before they go dark."
               />
             </div>
           ) : null}

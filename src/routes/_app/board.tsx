@@ -56,7 +56,7 @@ function BoardPage() {
               </option>
             ))}
           </Select>
-          {access && !access.canSave ? <UnlockButton label="Unlock to add $5" /> : <NewLeadDialog />}
+          {access && !access.canSave ? <UnlockButton label="Unlock to add" /> : <NewLeadDialog />}
         </div>
       </div>
 

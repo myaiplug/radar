@@ -7,6 +7,10 @@ import appCss from "../styles.css?url";
 
 const APP_NAME = "Radar";
 
+function asset(path: string) {
+  return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+}
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: { staleTime: 15_000, retry: 1, refetchOnWindowFocus: false },
@@ -14,6 +18,7 @@ const queryClient = new QueryClient({
 });
 
 export const Route = createRootRoute({
+  ...(import.meta.env.BASE_URL === "/radar/" ? { ssr: false as const } : {}),
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -26,10 +31,10 @@ export const Route = createRootRoute({
       },
     ],
     links: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/svg+xml", href: asset("favicon.svg") },
       { rel: "stylesheet", href: appCss },
-      { rel: "manifest", href: "/__grok/manifest.webmanifest" },
-      { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
+      { rel: "manifest", href: asset("__grok/manifest.webmanifest") },
+      { rel: "apple-touch-icon", href: asset("__grok/icon-180.png") },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

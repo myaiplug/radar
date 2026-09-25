@@ -1,22 +1,24 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { inspectThread, runHunt, writeOutreach } from "./ai";
-import { getAccess } from "./access";
-import { confirmCheckout, startCheckout } from "./billing";
 import {
+  confirmCheckout,
   createLead,
   deleteLead,
+  getAccess,
   getDeskStats,
   getLead,
+  inspectThread,
   listDrafts,
   listLeads,
   listServices,
+  runHunt,
   saveDraft,
   setLeadStage,
+  startCheckout,
   updateLead,
   updateService,
-  type LeadInput,
-} from "./server";
-import type { ChannelId, StageId } from "./types";
+  writeOutreach,
+} from "./desk";
+import type { ChannelId, LeadInput, StageId } from "./types";
 
 function useInvalidateDesk() {
   const qc = useQueryClient();
@@ -39,7 +41,7 @@ export function useLeads() {
 export function useLead(id: number) {
   return useQuery({
     queryKey: ["lead", id],
-    queryFn: () => getLead({ data: id }),
+    queryFn: () => getLead(id),
     enabled: Number.isFinite(id),
   });
 }
@@ -55,7 +57,7 @@ export function useAccess() {
 export function useDrafts(leadId: number) {
   return useQuery({
     queryKey: ["drafts", leadId],
-    queryFn: () => listDrafts({ data: leadId }),
+    queryFn: () => listDrafts(leadId),
     enabled: Number.isFinite(leadId),
   });
 }
@@ -64,19 +66,19 @@ export function useLeadMutations() {
   const invalidate = useInvalidateDesk();
 
   const create = useMutation({
-    mutationFn: (input: LeadInput) => createLead({ data: input }),
+    mutationFn: async (input: LeadInput) => createLead(input),
     onSuccess: invalidate,
   });
   const update = useMutation({
-    mutationFn: (input: LeadInput & { id: number }) => updateLead({ data: input }),
+    mutationFn: async (input: LeadInput & { id: number }) => updateLead(input),
     onSuccess: invalidate,
   });
   const stage = useMutation({
-    mutationFn: (input: { id: number; stage: StageId }) => setLeadStage({ data: input }),
+    mutationFn: async (input: { id: number; stage: StageId }) => setLeadStage(input),
     onSuccess: invalidate,
   });
   const remove = useMutation({
-    mutationFn: (id: number) => deleteLead({ data: id }),
+    mutationFn: async (id: number) => deleteLead(id),
     onSuccess: invalidate,
   });
 
@@ -86,8 +88,8 @@ export function useLeadMutations() {
 export function useServiceMutation() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (input: { id: number; rateLabel?: string; active?: boolean; blurb?: string }) =>
-      updateService({ data: input }),
+    mutationFn: async (input: { id: number; rateLabel?: string; active?: boolean; blurb?: string }) =>
+      updateService(input),
     onSuccess: () => {
       void qc.invalidateQueries({ queryKey: ["services"] });
     },
@@ -103,7 +105,7 @@ export function useHunt() {
       geo: string;
       notes: string;
       windowHours: number;
-    }) => runHunt({ data: input }),
+    }) => runHunt(input),
     onSuccess: () => {
       void qc.invalidateQueries({ queryKey: ["access"] });
     },
@@ -112,19 +114,18 @@ export function useHunt() {
 
 export function useThreadPeek() {
   return useMutation({
-    mutationFn: (postUrl: string) => inspectThread({ data: { postUrl } }),
+    mutationFn: (postUrl: string) => inspectThread({ postUrl }),
   });
 }
 
 export function useOutreach() {
   const qc = useQueryClient();
   const write = useMutation({
-    mutationFn: (input: { leadId: number; channel: ChannelId; extra?: string }) =>
-      writeOutreach({ data: input }),
+    mutationFn: async (input: { leadId: number; channel: ChannelId; extra?: string }) =>
+      writeOutreach(input),
   });
   const save = useMutation({
-    mutationFn: (input: { leadId: number; channel: ChannelId; body: string }) =>
-      saveDraft({ data: input }),
+    mutationFn: async (input: { leadId: number; channel: ChannelId; body: string }) => saveDraft(input),
     onSuccess: (_d, vars) => {
       void qc.invalidateQueries({ queryKey: ["drafts", vars.leadId] });
     },
@@ -135,7 +136,7 @@ export function useOutreach() {
 export function useCheckout() {
   const invalidate = useInvalidateDesk();
   return useMutation({
-    mutationFn: () => startCheckout(),
+    mutationFn: async () => startCheckout(),
     onSuccess: (res) => {
       if (res.ok && "unlocked" in res && res.unlocked) invalidate();
     },
@@ -145,7 +146,7 @@ export function useCheckout() {
 export function useConfirmCheckout() {
   const invalidate = useInvalidateDesk();
   return useMutation({
-    mutationFn: (input: { sessionId: string }) => confirmCheckout({ data: input }),
+    mutationFn: async (input: { sessionId: string }) => confirmCheckout(input),
     onSuccess: (res) => {
       if (res.ok) invalidate();
     },

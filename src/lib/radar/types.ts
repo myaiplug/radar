@@ -89,6 +89,25 @@ export type Draft = {
   createdAt: string;
 };
 
+export type LeadInput = {
+  name: string;
+  company?: string;
+  roleTitle?: string;
+  contact?: string;
+  source?: string;
+  serviceId?: number | null;
+  stage?: StageId;
+  valueUsd?: number;
+  score?: number;
+  why?: string;
+  angle?: string;
+  nextAction?: string;
+  followUpOn?: string | null;
+  notes?: string;
+  postUrl?: string;
+  postQuote?: string;
+};
+
 export type Prospect = {
   name: string;
   company: string;

@@ -3,7 +3,7 @@ import { useCheckout } from "@/lib/radar/hooks";
 import { Button } from "./ui/button";
 
 export function UnlockButton({
-  label = "Unlock $5",
+  label = "Unlock desk",
   variant = "default",
   size = "default",
   className,

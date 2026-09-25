@@ -52,12 +52,16 @@ export function AppShell() {
           })}
         </nav>
         <div className="border-t border-border px-4 py-4">
-          {isPending ? (
-            <Skeleton className="h-8 w-full" />
+          {authEnabled ? (
+            isPending ? (
+              <Skeleton className="h-8 w-full" />
+            ) : (
+              <div className="[&_button]:text-muted [&_img]:size-7 [&_span]:text-xs">
+                <UserButton />
+              </div>
+            )
           ) : (
-            <div className="[&_button]:text-muted [&_img]:size-7 [&_span]:text-xs">
-              <UserButton />
-            </div>
+            <p className="text-xs text-subtle">Saved in this browser</p>
           )}
         </div>
       </aside>

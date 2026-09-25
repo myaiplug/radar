@@ -48,7 +48,7 @@ export function NewLeadDialog({ triggerLabel = "New lead" }: { triggerLabel?: st
             e.preventDefault();
             if (!name.trim()) return;
             if (access && !access.canSave) {
-              toast.error("Free desk holds 2 leads. Unlock $5 to keep more.");
+              toast.error("Free desk holds 2 leads. Unlock the desk to keep more.");
               return;
             }
             create.mutate(

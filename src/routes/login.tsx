@@ -27,7 +27,7 @@ function Login() {
         </Link>
         <h1 className="mt-8 font-display text-4xl leading-tight">Sign in to the desk</h1>
         <p className="mt-3 text-sm text-muted">
-          First hunt is free. Live posts from the last 48 hours. Two leads held. $5 keeps them.
+          First hunt is free. Public posts from the last 48 hours. Two leads held. Unlock the desk to keep them.
         </p>
         <div className="mt-8 space-y-3">
           {authEnabled ? (

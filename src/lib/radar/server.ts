@@ -12,6 +12,7 @@ import {
   type DeskStats,
   type Draft,
   type Lead,
+  type LeadInput,
   type Service,
   type StageId,
 } from "./types";
@@ -251,24 +252,7 @@ export const getLead = createServerFn({ method: "GET" })
     return rows[0] ? redactLead(mapLead(rows[0]), access) : null;
   });
 
-export type LeadInput = {
-  name: string;
-  company?: string;
-  roleTitle?: string;
-  contact?: string;
-  source?: string;
-  serviceId?: number | null;
-  stage?: StageId;
-  valueUsd?: number;
-  score?: number;
-  why?: string;
-  angle?: string;
-  nextAction?: string;
-  followUpOn?: string | null;
-  notes?: string;
-  postUrl?: string;
-  postQuote?: string;
-};
+export type { LeadInput };
 
 export const createLead = createServerFn({ method: "POST" })
   .middleware([authMiddleware])

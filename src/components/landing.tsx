@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CATALOG } from "@/lib/radar/catalog";
+import { openDesk } from "@/lib/radar/open-desk";
 import { CATEGORIES } from "@/lib/radar/types";
 import { RadarMark } from "./radar-mark";
 import { Button } from "./ui/button";
@@ -8,7 +9,7 @@ const STEPS = [
   {
     n: "01",
     title: "Hunt free",
-    body: "One live hunt. Radar pulls real posts from the last 48 hours on X, Reddit, and Upwork. Permalink on every card.",
+    body: "One hunt. Real posts from Reddit, Hacker News, and public job boards. Permalink on every card.",
   },
   {
     n: "02",
@@ -17,8 +18,8 @@ const STEPS = [
   },
   {
     n: "03",
-    title: "Unlock $5",
-    body: "Once. Keep every lead. Hunt without a cap. Pitch writer opens. No subscription.",
+    title: "Unlock the desk",
+    body: "Keeps every lead in this browser. Hunts stay open. Pitch writer opens. No account.",
   },
 ];
 
@@ -31,7 +32,9 @@ export function Landing() {
           <span className="font-display text-2xl leading-none">Radar</span>
         </div>
         <Button asChild size="sm">
-          <Link to="/login">Sign in</Link>
+          <Link to="/hunt" onClick={() => openDesk()}>
+            Open desk
+          </Link>
         </Button>
       </header>
 
@@ -45,14 +48,18 @@ export function Landing() {
           Keep the work.
         </h1>
         <p className="mt-6 max-w-xl text-base text-muted md:text-lg">
-          Hunt a niche. Get posts from the last 48 hours. Real permalinks. Save two leads free. They go dark in 48 hours unless you unlock the desk for $5.
+          Hunt a niche. Real permalinks from public boards. Save two leads free. They go dark in 48 hours unless you unlock the desk in this browser.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">
-            <Link to="/login">Hunt free</Link>
+            <Link to="/hunt" onClick={() => openDesk()}>
+              Hunt free
+            </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link to="/login">Unlock $5</Link>
+            <Link to="/" onClick={() => openDesk()}>
+              Open the board
+            </Link>
           </Button>
         </div>
         <p className="mt-8 max-w-2xl text-sm leading-relaxed text-subtle">
@@ -75,9 +82,9 @@ export function Landing() {
 
       <section className="mx-auto w-full max-w-6xl px-5 py-16 md:px-8 md:py-20">
         <p className="text-xs font-medium tracking-[0.18em] text-steel uppercase">Price</p>
-        <h2 className="mt-3 font-display text-4xl md:text-5xl">$5 once.</h2>
+        <h2 className="mt-3 font-display text-4xl md:text-5xl">Kept in this browser.</h2>
         <p className="mt-4 max-w-xl text-sm text-muted md:text-base">
-          No monthly. The free tease is supposed to sting. You find real names, you feel them slipping, you keep them.
+          No account and no card checkout on this public copy. The free tease still stings: two leads, 48 hours, then they go dark until you unlock the desk on this machine.
         </p>
         <ul className="mt-8 grid gap-3 text-sm text-fg md:grid-cols-2">
           <li className="rounded-lg bg-surface px-4 py-3">Live posts from the last 48 hours</li>
@@ -86,7 +93,9 @@ export function Landing() {
           <li className="rounded-lg bg-surface px-4 py-3">DM / email / proposal writer</li>
         </ul>
         <Button asChild size="lg" className="mt-8">
-          <Link to="/login">Start the free hunt</Link>
+          <Link to="/hunt" onClick={() => openDesk()}>
+            Start the free hunt
+          </Link>
         </Button>
       </section>
 
@@ -121,7 +130,7 @@ export function Landing() {
 
       <footer className="border-t border-border">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 py-8 text-xs text-subtle md:flex-row md:items-center md:justify-between md:px-8">
-          <span>Radar · $5 lifetime desk</span>
+          <span>Radar · browser desk</span>
           <span>Built by bZ in Louisville, KY</span>
         </div>
       </footer>

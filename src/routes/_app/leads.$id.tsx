@@ -164,7 +164,7 @@ function LeadPage() {
         <div className="mt-6 max-w-xl">
           <UnlockCard
             title="This lead went dark"
-            body="The name is still here. The post, the handle, and the pitch writer come back with $5."
+            body="The name is still here. Unlock the desk to bring back the post, the handle, and the pitch writer."
           />
         </div>
       ) : null}
@@ -277,7 +277,7 @@ function LeadPage() {
           <div className="mt-4 max-w-xl">
             <UnlockCard
               title="Pitch writer is locked"
-              body="You can open the source post on the free desk. The writer that turns it into a DM is $5."
+              body="You can open the source post on the free desk. The writer that turns it into a DM unlocks with the desk."
             />
           </div>
         ) : (

@@ -33,7 +33,7 @@ function DeskPage() {
           <Button asChild variant="outline">
             <Link to="/hunt">{access?.canHunt === false ? "Hunt locked" : "Run a hunt"}</Link>
           </Button>
-          {access && !access.canSave ? <UnlockButton label="Unlock $5" /> : <NewLeadDialog />}
+          {access && !access.canSave ? <UnlockButton label="Unlock desk" /> : <NewLeadDialog />}
         </div>
       </div>
 

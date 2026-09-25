@@ -14,9 +14,9 @@ export function UnlockCard({
       <h2 className="mt-2 font-display text-3xl leading-none">{title ?? "Keep the names"}</h2>
       <p className="mt-3 max-w-xl text-sm text-muted">
         {body ??
-          "Two leads on the free desk. They go dark in 48 hours. $5 once keeps every post, every hunt, and the pitch writer."}
+          "Two leads on the free desk. They go dark in 48 hours. Unlock keeps every post, every hunt, and the pitch writer in this browser."}
       </p>
-      <UnlockButton className="mt-5" label="Unlock $5" />
+      <UnlockButton className="mt-5" label="Unlock desk" />
     </Card>
   );
 }
