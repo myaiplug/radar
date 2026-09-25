@@ -47,8 +47,8 @@ export function Landing() {
           <br />
           Keep the work.
         </h1>
-        <p className="mt-6 max-w-xl text-base text-muted md:text-lg">
-          Hunt a niche. Real permalinks from public boards. Save two leads free. They go dark in 48 hours unless you unlock the desk in this browser.
+        <p className="mt-6 max-w-xl text-base text-fg md:text-lg">
+          This is a freelance lead desk. Pick an offer, run a hunt, and Radar lists real public posts with links. Save two names free. They stay in this browser.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg">

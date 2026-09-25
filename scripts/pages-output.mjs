@@ -2,7 +2,7 @@
  * GitHub Pages needs index.html at the site root, a 404 copy for deep links,
  * and .nojekyll so folders like __grok are published.
  */
-import { access, copyFile, writeFile } from "node:fs/promises";
+import { access, copyFile, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..", ".output", "public");
@@ -25,6 +25,9 @@ if (!(await exists(index)) && (await exists(shell))) {
 if (!(await exists(index)) && (await exists(dotHtml))) {
   await copyFile(dotHtml, index);
 }
+// A file named ".html" makes GitHub Pages serve the site root as
+// application/octet-stream, so browsers download it instead of rendering it.
+if (await exists(dotHtml)) await unlink(dotHtml);
 if (!(await exists(index))) {
   throw new Error(`GitHub Pages output missing ${index}`);
 }
